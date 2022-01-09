@@ -1,0 +1,136 @@
+/*** Flip Card */
+
+/* div {
+	--card-width: attr(data-width px, 128px);
+	--card-height: attr(data-height px, 128px);
+} */
+
+.flip-card {
+	--card-width: 128px;
+	--card-height: 128px;
+	--half: calc((var(--card-height))*0.5);
+	--quarter: calc((var(--card-height))*0.25);
+
+	background-color: transparent;
+	width: calc(var(--card-width)*1.5);
+	height: calc(var(--card-height)*1.5 );
+	/* border: 1px solid red; */
+	perspective: 1000px; /* Remove this if you don't want the 3D effect */
+	z-index: 1;
+}
+
+.flip-card-disabled {
+	--card-width: 128px;
+	--card-height: 128px;
+	--half: calc((var(--card-height))*0.5);
+	--quarter: calc((var(--card-height))*0.25);
+
+	background-color: transparent;
+	width: calc(var(--card-width)*1.5);
+	height: calc(var(--card-height)*1.5 );
+	top: var(--quarter);
+	/* border: 1px solid red; */
+	/* Remove this if you don't want the 3D effect */
+	perspective: 1000px; 
+	z-index: 1;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+	position: relative;
+	width: inherit;
+	height: inherit;
+	text-align: center;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
+	margin: 1rem;
+}
+
+.flip-card-inner:hover {
+	top: 0px;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+	transform: rotateY(180deg) scale(1.5);
+	/* transform: scale(1.5); */
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+	position: absolute;
+	width: var(--card-width);
+	height: var(--card-height);
+	top: 0px;
+	top: var(--quarter);
+	background-color: #4FC546;
+	-webkit-backface-visibility: hidden; /* Safari */
+	backface-visibility: hidden;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+	background-color: #EFF0F3;
+	color: black;
+	max-height: var(--card-height);
+	overflow: none;
+}
+
+.flip-card:hover .flip-card-front  {
+	transform: translateY(var(--half));
+	transition: transform 0.2s;
+}
+
+/** Style the back side */
+.flip-card-back {
+	color: white;
+	transform: rotateY(180deg);
+	/* box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); */
+	box-shadow: 0 10px 20px 4px #b9b9b9;
+}
+
+/** Style the back side */
+
+/** back side colors */
+.red.flip-card-back {
+	background: #e5243b !important;
+}
+
+/** Flip Card */
+
+/** Progress  Bars */
+
+.p-progressbar .p-progressbar-value, .p-progressbar .p-progressbar-label {
+	content: attr(value);
+	backface-visibility: var(--data-value);
+	-webkit-backface-visibility: hidden; /* Safari */
+	backface-visibility: hidden;
+	border-width: 2px;
+	border-color: #e2e8f0;
+	border-radius: 5px;
+}
+
+.p-progressbar-value-animate {
+	background: linear-gradient(45deg, #DDF0D6, #20B716) !important;
+}
+
+/* .p-progressbar, .p-progressbar-determinatess {
+	border-width: 2px;
+	border-color: #e2e8f0;
+	border-radius: 5px;
+} */
+
+.flip-card-back:hover, .p-progressbar-value, .p-progressbar .p-progressbar-label, .p-progressbar-determinatess {
+	-webkit-backface-visibility: hidden; /* Safari */
+	backface-visibility: hidden;
+}
+
+/* .flip-card .flip-card-back:hover, .p-progressbar .p-progressbar-determinatess {
+	border-width: 0px;
+	border-color: transparent;
+	border-radius: 0px;
+} */
+
+/** Progress  Bars */
