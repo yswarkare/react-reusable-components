@@ -1,7 +1,8 @@
-import { users } from "../DummyData";
+import { users, abc } from "../DummyData";
 
 const sessionState = {
   users: users,
+  abc: abc,
 }
 
 export default sessionState;
