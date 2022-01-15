@@ -8,6 +8,7 @@ const localState = {
     noActionsCompleted: null,
     entries: [],
     abc: [],
+    selectedEntries: [],
 }
 
 export default localState;

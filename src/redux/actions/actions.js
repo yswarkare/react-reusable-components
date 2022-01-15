@@ -8,7 +8,7 @@ export const reduxStateAction =
 			type = `array_${(method)}_[${(entity.toString())}]_local`;
 		}
 		if (typeof(entity) === "string") {
-			type = `${method}_${entity}_${storage}`;
+			type = `${(method)}_${(entity)}_${(storage)}`;
 		}
 		try {
 			await dispatch({
@@ -25,7 +25,7 @@ export const reduxStateAction =
 		}
 	};
 
-export const reduxApiAction =
+export const reduxApiAction =	
 	(method, url, data, entity, storage = "session") =>
 	async (dispatch) => {
 		try {
@@ -36,7 +36,7 @@ export const reduxApiAction =
 			});
 			if (res?.status === 200 || res?.status === 201) {
 				await dispatch({
-					type: `${method}_${entity}_${storage}`,
+					type: `${(method)}_${(entity)}_${(storage)}`,
 					payload: res?.data,
 					method,
 					url,

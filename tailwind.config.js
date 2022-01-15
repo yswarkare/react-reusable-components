@@ -6,7 +6,10 @@ const width = require('./src/tailwind/width');
 const cards = require('./src/tailwind/cards');
 
 module.exports = {
-	content: ['./src/**/*.{html,js}'],
+	content: [
+		'./public/**/*.html',
+		'./src/**/*.{html,js,jsx,ts,tsx}',
+	],
 	presets: [],
 	darkMode: 'media', // or 'class'
 	prefix: '',

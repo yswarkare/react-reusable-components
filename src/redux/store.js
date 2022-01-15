@@ -29,6 +29,7 @@ const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
 
 const storeState = (store) => {
     const globalState = store.getState();
+    console.log({thunk});
     //* saveToLocalStorage(globalState.local); */
     saveToSessionStorage({...globalState, local: null });
     saveToLocalStorage({ ...globalState.local });
