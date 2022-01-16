@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const reduxStateAction =
 	(method, entity, data, storage = "session") => async (dispatch) => {
+		console.log({method, entity, data, storage})
 		let type = ``;
 		if (Array.isArray(entity) && Array.isArray(data)) {
 			if (entity?.length !== data?.length) throw console.log("entity length is not equal to data length");
@@ -12,7 +13,7 @@ export const reduxStateAction =
 		}
 		try {
 			await dispatch({
-				type,
+				type: (type),
 				payload: data,
 				method,
 				entity,
