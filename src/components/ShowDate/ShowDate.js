@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { getDateObject } from '../../../utils/utilities';
+import { getDateObject } from '../../utils/utilities';
 
 
 class ShowDate extends Component {
