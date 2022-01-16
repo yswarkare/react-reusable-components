@@ -1,29 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
-  Routes
+  Outlet,
+  useMatch,
 } from "react-router-dom";
-import AuthRoute from '../../components/AuthRoute/AuthRoute';
-import routes from '../../routes';
+import Header from '../Header/Header';
 
 const DefaultLayout = () => {
+  const match = useMatch("");
+  useEffect(() => {
+    if (match) console.log({match});
+    else console.log("match doesn't exists");  
+  }, [])
   return (
     <div className={`w-full flex flex-col justify-center content-center items-center`}>
-      Default Layout
-      <Routes>
-        {
-          routes.map((item, index)=>{
-            return (
-              <>
-                <AuthRoute
-                  path={item.path}
-                  exact={item.exact}
-                  element={item?.element}
-                ></AuthRoute>
-              </>
-            ) 
-          })
-        }
-      </Routes>
+      <header className={`w-full flex flex-col justify-center content-center items-center`} >
+        <Header></Header>
+      </header>
+      <main className={`w-full flex flex-col justify-center content-center items-center`} >
+        <Outlet />
+      </main>
     </div>
   );
 }
