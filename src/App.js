@@ -1,27 +1,12 @@
 import './App.css';
-import Home from './components/Home';
 import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
+  useRoutes
 } from "react-router-dom";
-import ErrorPage from "./pages/ErrorPage";
-import DefaultLayout from './layouts/DefaultLayout/DefaultLayout';
+import routes from './routes/routes';
 
 function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route path={`/`} element={<DefaultLayout></DefaultLayout>} ></Route>
-          {/* <Route path={`*`} element={<ErrorPage></ErrorPage>}></Route> */}
-        </Routes>
-      </Router>
-    </div>
-  );
+  const element = useRoutes(routes);
+  return element;
 }
 
 export default App;
