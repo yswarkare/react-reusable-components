@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "ComponentLab/*": ["./src/ComponentLab/*"],
+      "components/*": ["./src/components/*"],
+      "data/*": ["./src/data/*"],
+      "layouts/*": ["./src/layouts/*"],
+      "Models/*": ["./src/Models/*"],
+      "pages/*": ["./src/pages/*"],
+      "redux/*": ["./src/redux/*"],
+      "routes/*": ["./src/routes/*"],
+      "utils/*": ["./src/utils/*"]
+    },
+  },
+}
