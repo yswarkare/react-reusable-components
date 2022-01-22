@@ -5,21 +5,21 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import "./assets/css/main.css";
+import './assets/css/main.css';
 import { BrowserRouter } from 'react-router-dom';
 import Loader from './pages/Loader';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store} >
-      <BrowserRouter>
-      <Suspense fallback={<Loader />}>
-        <App />
-      </Suspense>
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<Provider store={store}>
+			<BrowserRouter>
+				<Suspense fallback={<Loader />}>
+					<App />
+				</Suspense>
+			</BrowserRouter>
+		</Provider>
+	</React.StrictMode>,
+	document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
