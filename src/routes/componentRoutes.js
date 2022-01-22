@@ -1,12 +1,11 @@
 import { lazy } from "react";
-import { components_link } from "./routes";
 
 //* link path
-export const radio_buttons_link = `/components/radio_buttons`;
-export const checkboxes_link = `/components/checkboxes`;
-export const tree_view_link = `/components/tree_view`;
-export const custom_tabs_link = `/components/custom_tabs`;
-export const date_lab_link = `/components/date_lab`;
+export const radio_buttons_link = `radio_buttons`;
+export const checkboxes_link = `checkboxes`;
+export const tree_view_link = `tree_view`;
+export const custom_tabs_link = `custom_tabs`;
+export const date_lab_link = `date_lab`;
 
 //* link name
 export const radio_buttons_linkname = `Radio Buttons`;

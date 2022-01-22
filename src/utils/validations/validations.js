@@ -188,16 +188,3 @@ export const validateDomain = (domain) => {
     }
 }
 
-export const validateGst = (gst) => {
-    let validation = new Validation();
-    let result = gst.match(
-        /\d{2}[A-Z]{5}\d{4}[A-Z]{1}[A-Z\d]{1}[Z]{1}[A-Z\d]{1}/
-    );
-    if (result == null) {
-        validation.update({ valid: false, error: true, message: "Please enter a valid GST number"});
-        return validation;
-    } else {
-        validation.update({ valid: true, error: false, message: "GST number is valid"});
-        return validation;
-    }
-}
