@@ -1,7 +1,7 @@
-import Loader from '../../components/Loader/Loader';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { sessionApiFuncAction } from '../../redux/sessionStorage/session.actions';
+import Loader from '../../components/Loader/Loader';
+import sessionApiAction from '../../redux/sessionStorage/actions/sessionApiAction';
 import getUsers from '../../services/getUsers';
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
 
 	useEffect(() => {
 		const getUsersList = async () => {
-			await dispatch(sessionApiFuncAction(getUsers, 'get', null, 'users'));
+			await dispatch(sessionApiAction(getUsers, 'get', null, 'users'));
 		};
 		getUsersList();
 	}, []);
