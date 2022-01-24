@@ -8,7 +8,7 @@ module.exports = {
         filename: "index.js"
     },
     alias: {
-        "@data": path.resolve(__dirname, './src/data/')
+        "@dummy/*": path.resolve(__dirname, './src/dummy/*')
       },
     module: {
         rules: [{
