@@ -3,7 +3,7 @@ import localState from "./local.state";
 const localReducer = (state = localState, action) => {
     
     const { type = "", method = "", entity = "", payload } = action;
-    console.log(action);
+    // console.log(action);
 
     switch (type) {
 
@@ -19,6 +19,12 @@ const localReducer = (state = localState, action) => {
                 if (state[element]) newState = {...newState, [element]: payload[index] };
             });
             return newState;
+        }
+
+        case `wating_to_${(method)}_${(entity)}_locals`: {
+            console.log(action);
+            if (state[entity]) return {...state, [`wating_to_${(method)}_${(entity)}`]: payload };
+            return state;
         }
 
         default:
