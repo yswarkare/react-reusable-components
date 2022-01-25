@@ -19,7 +19,7 @@ const reduxApiAction =
 				});
 			}
 			await dispatch({
-				type: `show_api_response_message_${storage}`,
+				type: `show_api_response_${method}_${entity}_${(storage)}`,
 				payload: res?.data,
 				message: res?.message,
 				status: res?.status,
@@ -34,7 +34,7 @@ const reduxApiAction =
 			});
 			await setTimeout(async ()=>{
 				await dispatch({
-					type: `remove_api_response_message_${storage}`,
+					type: `remove_api_response_${method}_${entity}_${(storage)}`,
 					payload: res?.data,
 					message: res?.message,
 					status: res?.status,

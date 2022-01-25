@@ -24,7 +24,7 @@ const sessionReducer = (state = sessionState, action) => {
 			return state;
 		}
 
-		case `show_api_response_message_session`: {
+		case `show_api_response_${method}_${entity}_session`: {
 			console.log(action);
 			let newMessage = message;
 			if (!message && (status === 200 || status === 201)) {
@@ -34,24 +34,23 @@ const sessionReducer = (state = sessionState, action) => {
 			}
 			return {
 				...state,
-				show_api_response_message: true,
-				api_response: {
+				[`show_api_response_${method}_${entity}`]: true,
+				[`api_response_${method}_${entity}`]: {
 					message: newMessage,
 					status: status,
 				},
 			};
 		}
 
-        case `remove_api_response_message_session`: {
-            console.log("remove_api_response_message_session")
-			return {
-				...state,
-				show_api_response_message: false,
-				api_response: {
-					message: "",
-					status: "",
-				},
-			};
+		case `remove_api_response_${method}_${entity}_session`: {
+			let newState = {...state};
+			delete newState[`wating_to_${method}_${entity}`];
+			delete newState[`show_api_response_${method}_${entity}`];
+			delete newState[`api_response_${method}_${entity}`];
+			console.log({newState});
+			console.log(`remove_api_response_${method}_${entity}_session`);
+			return newState;
+
 		}
 
 		default:
