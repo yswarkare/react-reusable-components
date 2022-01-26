@@ -12,11 +12,11 @@ const reduxStateTitle = 'redux_session_state';
 
 //* variable to hold loaded session state */
 
-const persistedSessionState = loadFromSessionStorage();
+const persistedSessionState = loadFromSessionStorage(reduxStateTitle);
 
 //* variable to hold loaded local state
 
-const persistedLocalState = loadFromLocalStorage();
+const persistedLocalState = loadFromLocalStorage(reduxStateTitle);
 
 const initialState = {
     ...persistedSessionState,
