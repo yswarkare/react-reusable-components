@@ -21,12 +21,6 @@ const localReducer = (state = localState, action) => {
             return newState;
         }
 
-        case `wating_to_${(method)}_${(entity)}_locals`: {
-            console.log(action);
-            if (state[entity]) return {...state, [`wating_to_${(method)}_${(entity)}`]: payload };
-            return state;
-        }
-
         default:
         return state;
     }
