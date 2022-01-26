@@ -652,12 +652,36 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 /* purgecss end ignore */
 
+.visible {
+  visibility: visible;
+}
+
 .static {
   position: static;
 }
 
+.fixed {
+  position: fixed;
+}
+
+.relative {
+  position: relative;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.right-0 {
+  right: 0px;
+}
+
 .z-10 {
   z-index: 10;
+}
+
+.z-50 {
+  z-index: 50;
 }
 
 .mx-2 {
@@ -679,6 +703,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0.25rem;
 }
 
+.mt-16 {
+  margin-top: 4rem;
+}
+
+.mr-12 {
+  margin-right: 3rem;
+}
+
 .ml-4 {
   margin-left: 1rem;
 }
@@ -694,6 +726,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
+}
+
+.h-0 {
+  height: 0px;
 }
 
 .h-6 {
@@ -883,6 +919,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.bg-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 
 .bg-gray-100 {
