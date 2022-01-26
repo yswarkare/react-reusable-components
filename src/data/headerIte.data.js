@@ -1,4 +1,4 @@
-import { about_link, components_link, home_link, profile_link, whats_new_link } from "../routes/routes";
+import { about_link, components_link, home_link, hooks_link, profile_link, whats_new_link } from "../routes/pages/pages.paths";
 
 const headerItems = [
   {
@@ -8,6 +8,10 @@ const headerItems = [
   {
     label: `Components`,
     path: components_link,
+  },
+  {
+    label: `Hooks`,
+    path: hooks_link,
   },
   {
     label: `Profile`,

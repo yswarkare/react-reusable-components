@@ -1,4 +1,4 @@
-import { checkboxes_link, custom_tabs_link, radio_buttons_link, date_lab_link, tree_view_link } from "../routes/componentRoutes";
+import { checkboxes_link, custom_tabs_link, radio_buttons_link, date_lab_link, tree_view_link } from "../routes/componentLab/componentLab.paths";
 
 const componentsList = [
   {
