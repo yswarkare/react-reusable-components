@@ -6,7 +6,7 @@ import getUsers from '../../services/getUsers';
 
 const Home = () => {
 	const users = useSelector((state) => state.session.users);
-	const wating_to_get_users = useSelector((state) => state.session?.wating_to_get_users);
+	const wating_to_get_users = useSelector((state) => state.session?.wating_to?.get_users);
 	const dispatch = useDispatch();
 
 	useEffect(() => {

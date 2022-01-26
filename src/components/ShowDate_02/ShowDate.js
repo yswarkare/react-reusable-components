@@ -1,4 +1,4 @@
-import React from 'react';
+ 
 
 const ShowDate = ({
 	date = new Date(),

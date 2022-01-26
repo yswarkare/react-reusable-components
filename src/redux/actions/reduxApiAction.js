@@ -9,7 +9,7 @@ const reduxApiAction =
 				entity,
 			});
 			let res = await func({ data: data });
-			console.log({res});
+			// console.log({res});
 			if (res?.status === 200 || res?.status === 201) {
 				await dispatch({
 					type: `${(method)}_${(entity)}_${(storage)}`,

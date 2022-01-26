@@ -1,4 +1,4 @@
-import React from 'react';
+ 
 import { Outlet } from 'react-router-dom';
 import componentsList from '../../data/componentsList.data';
 import ComponentInfo from '../../views/ComponentInfo/ComponentInfo';

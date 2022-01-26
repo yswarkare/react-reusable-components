@@ -1,4 +1,4 @@
-import React from 'react';
+ 
 
 const FixedFooter = ({ className = '', addClasses = '', style = {}, ...restProps }) => {
 	return (
