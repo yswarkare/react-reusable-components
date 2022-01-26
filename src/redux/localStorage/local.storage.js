@@ -1,10 +1,10 @@
 //* function to save redux state to local storage
 
-export const saveToLocalStorage = (state) => {
+export const saveToLocalStorage = (stateName, state) => {
 	try {
 		// console.log("local state => ", state);
 		const serializedLocalState = JSON.stringify(state);
-		localStorage.setItem("redux_local_state", serializedLocalState);
+		localStorage.setItem(stateName, serializedLocalState);
 	} catch (error) {
 		console.log(error);
 	}
@@ -12,9 +12,9 @@ export const saveToLocalStorage = (state) => {
 
 //* function to load redux state from Local storage
 
-export const loadFromLocalStorage = () => {
+export const loadFromLocalStorage = (stateName) => {
 	try {
-		let serializedLocalState = localStorage.getItem("redux_local_state");
+		let serializedLocalState = localStorage.getItem(stateName);
 		if (serializedLocalState === null) {
 			return undefined;
 		}

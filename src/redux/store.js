@@ -7,6 +7,9 @@ import sessionReducer from "./sessionStorage/session.reducer";
 import { loadFromLocalStorage, saveToLocalStorage } from "./localStorage/local.storage";
 import { loadFromSessionStorage, saveToSessionStorage } from "./sessionStorage/session.storage";
 
+//* name of redux state in storage
+const reduxStateTitle = 'redux_session_state';
+
 //* variable to hold loaded session state */
 
 const persistedSessionState = loadFromSessionStorage();
@@ -27,18 +30,18 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
 
-const storeState = (store) => {
+const storeState = (reduxStateTitle, store) => {
     const globalState = store.getState();
     //* saveToLocalStorage(globalState.local); */
-    saveToSessionStorage({...globalState, local: null });
-    saveToLocalStorage({ ...globalState.local });
+    saveToSessionStorage(reduxStateTitle, {...globalState, local: null });
+    saveToLocalStorage(reduxStateTitle, { ...globalState.local });
 }
 
-storeState(store);
+storeState(reduxStateTitle, store);
 
 //* save redux state to session storage and local storage */
 store.subscribe(()=>{
-    storeState(store);
+    storeState(reduxStateTitle, store);
 });
 
 export default store;

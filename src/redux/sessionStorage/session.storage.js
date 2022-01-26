@@ -1,10 +1,10 @@
 //* function to save redux state to session storage */
 
-export const saveToSessionStorage = (state) => {
+export const saveToSessionStorage = (stateName, state) => {
 	try {
 		// console.log("session state => ", state);
 		const serializedSessionState = JSON.stringify(state);
-		sessionStorage.setItem("redux_session_state", serializedSessionState);
+		sessionStorage.setItem(stateName, serializedSessionState);
 	} catch (error) {
 		console.log(error);
 	}
@@ -12,9 +12,9 @@ export const saveToSessionStorage = (state) => {
 
 //* function to load redux state from session storage */
 
-export const loadFromSessionStorage = () => {
+export const loadFromSessionStorage = (stateName) => {
 	try {
-		let serializedSessionState = sessionStorage.getItem("redux_session_state");
+		let serializedSessionState = sessionStorage.getItem(stateName);
 		if (serializedSessionState === null) {
 			return undefined;
 		}
