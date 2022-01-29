@@ -1,4 +1,3 @@
- 
 import { useSelector } from 'react-redux';
 import Toast from '../../components/Toast/Toast';
 
@@ -7,11 +6,17 @@ const ShowApiResponse = () => {
 	const api_response = useSelector((state) => state?.session?.api_response);
 	return (
 		<>
-			{Object.entries(api_response)?.map?.((response, index) => {
-				return (
-					<Toast key={index} visible={show_api_response[response[0]]} message={response[1]}></Toast>
-				);
-			})}
+			{api_response &&
+				Object.entries(api_response)?.map?.(
+					(response, index) =>
+						show_api_response[response[0]] && (
+							<Toast
+								key={index}
+								visible={show_api_response[response[0]]}
+								message={response[1]}
+							></Toast>
+						)
+				)}
 		</>
 	);
 };
