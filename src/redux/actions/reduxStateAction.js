@@ -9,7 +9,11 @@ const reduxStateAction =
 			type = `array_${(method)}_[${entity.toString()}]_local`;
 		}
 		if (typeof entity === 'string') {
-			type = `${(method)}_${(entity)}_${(storage)}`;
+			if(entity.includes(".") || entity.includes("[")) {
+				type = `nested_object_${(method)}_${(entity)}_${(storage)}`;
+			} else {
+				type = `${(method)}_${(entity)}_${(storage)}`;
+			}
 		}
 		try {
 			await dispatch({

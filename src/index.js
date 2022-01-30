@@ -5,10 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import './assets/css/main.css';
+import './assets/css/main.css';	
 import "@popperjs/core";
 import 'bootstrap';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import '@fortawesome/fontawesome-free/js/all';
 import { BrowserRouter } from 'react-router-dom';
 import Loader from './pages/Loader';
 

@@ -8,6 +8,7 @@ import {
 	profile_link,
 	components_link,
 	hooks_link,
+	redux_link,
 } from './pages/pages.paths';
 
 //* link name
@@ -18,6 +19,7 @@ export const whats_new_linkname = `Whats New`;
 export const profile_linkname = `Profilee`;
 export const components_linkname = 'Components';
 export const hooks_linkName = 'React Hooks';
+export const redux_linkName = 'React Redux';
 
 //* Components
 
@@ -28,6 +30,7 @@ const WhatsNew = lazy(() => import('../pages/WhatsNew'));
 const Profile = lazy(() => import('../pages/Profile'));
 const Components = lazy(() => import('../pages/Components'));
 const Hooks = lazy(() => import('../pages/Hooks'));
+const Redux = lazy(() => import('../pages/Redux'));
 
 const routes = [
 	{
@@ -70,6 +73,11 @@ const routes = [
 				path: hooks_link,
 				pathname: hooks_linkName,
 				element: <Hooks />,
+			},
+			{
+				path: redux_link,
+				pathname: redux_linkName,
+				element: <Redux />,
 			},
 		],
 	},

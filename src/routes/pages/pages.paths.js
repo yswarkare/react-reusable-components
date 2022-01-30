@@ -5,3 +5,4 @@ export const whats_new_link = `/whats-new`;
 export const profile_link = `/profile`;
 export const components_link = `/components`;
 export const hooks_link = `/hooks`;
+export const redux_link = `/redux`;

@@ -1,4 +1,4 @@
-import { about_link, components_link, home_link, hooks_link, profile_link, whats_new_link } from "../routes/pages/pages.paths";
+import { about_link, components_link, home_link, hooks_link, profile_link, redux_link, whats_new_link } from "../routes/pages/pages.paths";
 
 const headerItems = [
   {
@@ -12,6 +12,10 @@ const headerItems = [
   {
     label: `Hooks`,
     path: hooks_link,
+  },
+  {
+    label: `Redux`,
+    path: redux_link,
   },
   {
     label: `Profile`,
