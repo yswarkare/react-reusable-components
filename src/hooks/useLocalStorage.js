@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const getStoredValue = (key, initialValue) => {
+const getStoredValue = (key, initialValue = null) => {
 	let storedValue = JSON.parse(localStorage.getItem(key));
 	if (storedValue) return storedValue;
 	if (initialValue instanceof Function) return initialValue();
