@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+// import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
@@ -12,15 +12,19 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@fortawesome/fontawesome-free/js/all';
 import { BrowserRouter } from 'react-router-dom';
 import Loader from './pages/Loader';
+import { ContextStateProvider } from './hooks/ContextState';
+
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<BrowserRouter>
-				<Suspense fallback={<Loader />}>
-					<App />
-				</Suspense>
-			</BrowserRouter>
+			<ContextStateProvider>
+				<BrowserRouter>
+					<Suspense fallback={<Loader />}>
+						<App />
+					</Suspense>
+				</BrowserRouter>
+			</ContextStateProvider>
 		</Provider>
 	</React.StrictMode>,
 	document.getElementById('root')
