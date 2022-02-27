@@ -47,13 +47,18 @@ const UsersTable = () => {
 		removeEditedItem(user);
 	}
 
-	const deleteUser = (user) => {};
+	const deleteUser = (user) => {
+		let newUsers = users.filter((_user)=> _user?.id !== user?.id);
+		updateContextState("users", newUsers);
+		removeEditedItem(user);
+	};
 
-	const columnsHeaders = ['Name', 'Username', 'Email', 'Actions'];
+	const columnsHeaders = ["Id", 'Name', 'Username', 'Email', 'Actions'];
 
-	const columnClasses = `w-25/100`;
-
-	const rowCells = ['name', 'username', 'emailID'];
+	const columnClasses = `w-full h-full flex flex-row justify-start content-start items-start`;
+	const columnHeaderClasses = [`${columnClasses} justify-center`, `${columnClasses} justify-center`, `${columnClasses} justify-center`, `${columnClasses} justify-center`, `${columnClasses} justify-center`]
+	const rowCells = ['id', 'name', 'username', 'emailID'];
+	const rowItemClasses = [`${columnClasses} justify-center`, columnClasses, columnClasses, columnClasses, `${columnClasses} justify-center`];
 
 	return (
 		<div className={`w-full flex flex-col justify-center content-center items-center`}>
@@ -61,7 +66,9 @@ const UsersTable = () => {
 				<thead className={`w-full flex flex-col justify-center content-center items-center`}>
 					<tr className={`w-full flex flex-row justify-center content-center items-center`}>
 						{columnsHeaders?.map((header, index) => (
-							<th className={`${columnClasses}`} key={index}>
+							<th className={`${columnHeaderClasses[index]}`} key={index} style={{
+								border: 'solid 1px'
+							}}>
 								{header}
 							</th>
 						))}
@@ -75,13 +82,16 @@ const UsersTable = () => {
 						>
 							{rowCells?.map((userProp, index) => (
 								<td
-									className={`${columnClasses} h-full flex flex-col justify-start content-start items-start`}
+									className={`${rowItemClasses[index]}`}
 									key={index}
+									style={{
+										border: 'solid 1px'
+									}}
 								>
 									<InputCell
 										type={`text`}
 										name={userProp}
-										className={`${editedItems[user.id] ? 'bg-gray-900' : ''}`}
+										className={`${editedItems[user.id] ? 'bg-gray-900 w-full' : ''} px-1 py-1`}
 										label={`${user?.[userProp]}`}
 										value={editedItems[user.id] ? editedItems[user.id][userProp] : user?.name}
 										edit={editedItems[user.id]}
@@ -92,7 +102,10 @@ const UsersTable = () => {
 								</td>
 							))}
 							<td
-								className={`${columnClasses} h-full flex flex-row flex-grow justify-evenly content-center items-center`}
+								className={`${columnClasses} h-full flex flex-row flex-grow justify-evenly content-center items-center px-1 py-1`}
+								style={{
+									border: 'solid 1px'
+								}}
 							>
 								{editedItems[user.id] ? (
 									<>
