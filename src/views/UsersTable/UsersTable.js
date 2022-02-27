@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
+import { useContextState, useUpdateContextState } from '../../hooks/ContextState';
 import InputCell from './InputCell';
 
 const UsersTable = () => {
-	const dispatch = useDispatch();
-	const users = useSelector((state) => state?.session?.users);
+	// const dispatch = useDispatch();
+	// const users = useSelector((state) => state?.session?.users);
+	const users = useContextState().users;
+	const updateContextState = useUpdateContextState();
 	const [editedItems, setEditedItems] = useState(() => ({}));
 
 	useEffect(() => {
@@ -38,19 +41,30 @@ const UsersTable = () => {
 		});
 	};
 
+	const saveUpdatedItems = (user) => {
+		let newUsers = users.map((_user)=> _user?.id === user?.id ? editedItems[user?.id] : _user);
+		updateContextState("users", newUsers);
+		removeEditedItem(user);
+	}
+
 	const deleteUser = (user) => {};
 
+	const columnsHeaders = ['Name', 'Username', 'Email', 'Actions'];
+
 	const columnClasses = `w-25/100`;
+
+	const rowCells = ['name', 'username', 'emailID'];
 
 	return (
 		<div className={`w-full flex flex-col justify-center content-center items-center`}>
 			<table className={`w-full flex flex-col justify-center content-center items-center`}>
 				<thead className={`w-full flex flex-col justify-center content-center items-center`}>
 					<tr className={`w-full flex flex-row justify-center content-center items-center`}>
-						<th className={`${columnClasses}`}>{'Name'}</th>
-						<th className={`${columnClasses}`}>{'Username'}</th>
-						<th className={`${columnClasses}`}>{'Email'}</th>
-						<th className={`${columnClasses}`}>{'Actions'}</th>
+						{columnsHeaders?.map((header, index) => (
+							<th className={`${columnClasses}`} key={index}>
+								{header}
+							</th>
+						))}
 					</tr>
 				</thead>
 				<tbody className={`w-full flex flex-col justify-center content-center items-center`}>
@@ -59,51 +73,24 @@ const UsersTable = () => {
 							className={`w-full h-full flex flex-row justify-center content-center items-center`}
 							key={index}
 						>
-							<td
-								className={`${columnClasses} h-full flex flex-col justify-start content-start items-start`}
-							>
-								<InputCell
-									type={`text`}
-									name={'name'}
-									className={`${editedItems[user.id] ? 'bg-gray-900' : ''}`}
-									label={`${user?.name}`}
-									value={editedItems[user.id] ? editedItems[user.id]['name'] : user?.name}
-									edit={editedItems[user.id]}
-									onChange={(e) => {
-										updateEditedItems(e, user);
-									}}
-								></InputCell>
-							</td>
-							<td
-								className={`${columnClasses} h-full flex flex-col justify-start content-start items-start`}
-							>
-								<InputCell
-									type={`text`}
-									name={'username'}
-									className={`${editedItems[user.id] ? 'bg-gray-900' : ''}`}
-									label={`${user?.username}`}
-									value={editedItems[user.id] ? editedItems[user.id]['username'] : user?.username}
-									edit={editedItems[user.id]}
-									onChange={(e) => {
-										updateEditedItems(e, user);
-									}}
-								></InputCell>
-							</td>
-							<td
-								className={`${columnClasses} h-full flex flex-col justify-start content-start items-start`}
-							>
-								<InputCell
-									type={`text`}
-									name={'email'}
-									className={`${editedItems[user.id] ? 'bg-gray-900' : ''}`}
-									label={`${user?.email}`}
-									value={editedItems[user.id] ? editedItems[user.id]['email'] : user?.email}
-									edit={editedItems[user.id]}
-									onChange={(e) => {
-										updateEditedItems(e, user);
-									}}
-								></InputCell>
-							</td>
+							{rowCells?.map((userProp, index) => (
+								<td
+									className={`${columnClasses} h-full flex flex-col justify-start content-start items-start`}
+									key={index}
+								>
+									<InputCell
+										type={`text`}
+										name={userProp}
+										className={`${editedItems[user.id] ? 'bg-gray-900' : ''}`}
+										label={`${user?.[userProp]}`}
+										value={editedItems[user.id] ? editedItems[user.id][userProp] : user?.name}
+										edit={editedItems[user.id]}
+										onChange={(e) => {
+											updateEditedItems(e, user);
+										}}
+									></InputCell>
+								</td>
+							))}
 							<td
 								className={`${columnClasses} h-full flex flex-row flex-grow justify-evenly content-center items-center`}
 							>
@@ -112,7 +99,7 @@ const UsersTable = () => {
 										<div
 											className={`w-fit p-1 cursor-pointer transition translate duration-300 flex flex-col justify-center content-center items-center`}
 											onClick={() => {
-												removeEditedItem(user);
+												saveUpdatedItems(user);
 											}}
 										>
 											<i className={`fas fa-save text-white text-base`}></i>
