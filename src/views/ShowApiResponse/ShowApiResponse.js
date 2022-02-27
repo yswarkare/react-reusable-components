@@ -13,7 +13,7 @@ const ShowApiResponse = () => {
  	}
 	return (
 		<div className='relative h-0 w-full flex'>
-			<div className='absolute top-0 bottom-0'>
+			<div className='absolute top-0 bottom-0 flex flex-col'>
 				{api_response &&
 					Object.entries(api_response)?.map?.(
 						(response, index) =>
