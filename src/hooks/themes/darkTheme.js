@@ -6,6 +6,10 @@ const darkTheme = (theme) => {
     ...defaultTheme(theme),
     backgroundColor: `${darkColors.surface_800}`,
     color: `${darkColors.primary_800}`,
+    '&button': {
+      backgroundColor: `${darkColors.surface_500}`,
+      color: `${darkColors.primary_500}`,
+    }
   }
 };
 
