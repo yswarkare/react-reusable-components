@@ -14,7 +14,7 @@ export const useContextState = () => {
 	return useContext(ContextState);
 };
 
-const UpdateContextState = createContext({});
+const UpdateContextState = createContext(()=>{});
 
 export const useUpdateContextState = () => {
 	return useContext(UpdateContextState);
